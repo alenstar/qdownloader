@@ -1,0 +1,8 @@
+from os.path import abspath
+Import('qdownloader', 'env')
+env = env.Clone()
+
+env.ParseConfig('curl-config --libs --cflags')
+env.Append(CXXFLAGS='-std=c++11', LIBS=[qdownloader])
+
+env.Program('test', ['main.cpp'])

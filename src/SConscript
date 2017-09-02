@@ -1,0 +1,12 @@
+Import("env")
+
+#Create a unique env
+env.ParseConfig('curl-config --libs --cflags')
+env.Append(CXXFLAGS='-std=c++11')
+
+qdownloader = env.SharedLibrary('qdownloader',
+    [
+        "httpclient.cpp",
+        "downloader.cpp"
+    ])
+Return("qdownloader")
